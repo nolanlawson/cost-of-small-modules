@@ -12,11 +12,18 @@ for ((i=0;i<1000;i++)); do
   echo "module.exports = ${i}" > cjs-1000/module_${i}.js
   echo "export default ${i}" > es6-1000/module_${i}.js
   echo "total += require('./module_${i}')" >> cjs-1000/index.js
-  echo "import module_${i} from './module_${i}'" >> es6-1000/index.js
+  echo -e "import module_${i} from './module_${i}'\ntotal += ${i}" >> es6-1000/index.js
 done
 
 echo "console.log(total)" >> cjs-1000/index.js
 echo "console.log(total)" >> es6-1000/index.js
 
 browserify ./cjs-1000 > dist/browserify.js
-rollup ./es6-1000/index.js > dist/rollup.js
+browserify -p bundle-collapser/plugin ./cjs-1000 > dist/browserify-collapsed.js
+webpack --entry ./cjs-1000 --output-filename dist/webpack.js >/dev/null
+rollup --format iife ./es6-1000/index.js > dist/rollup.js
+
+uglifyjs -mc < dist/browserify.js > dist/browserify.min.js
+uglifyjs -mc < dist/browserify-collapsed.js > dist/browserify-collapsed.min.js
+uglifyjs -mc < dist/webpack.js > dist/webpack.min.js
+uglifyjs -mc < dist/rollup.js > dist/rollup.min.js
