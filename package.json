@@ -1,0 +1,23 @@
+{
+  "name": "cost-of-small-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "browserify.js",
+  "bin": {
+    "cost-of-small-modules": "build.js"
+  },
+  "dependencies": {
+    "browserify": "^13.1.0",
+    "lodash.times": "^4.3.2",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.34.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "node bin/build.js"
+  },
+  "keywords": [],
+  "author": "Nolan Lawson <nolan@nolanlawson.com>",
+  "license": "Apache-2.0"
+}
