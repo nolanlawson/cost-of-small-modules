@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 npm run build
-BRANCH_NAME=$RANDOM
+BRANCH_NAME=build_"$RANDOM"
 git checkout -b $BRANCH_NAME
 git add -f dist lib script.es5.js
 git commit -m 'build'
-git push origin $BRANCH_NAME:gh-pages
+git push --force origin $BRANCH_NAME:gh-pages
 git checkout master
 git branch -D $BRANCH_NAME
