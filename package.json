@@ -2,24 +2,25 @@
   "name": "cost-of-small-modules",
   "version": "1.0.0",
   "description": "",
-  "main": "",
-  "bin": {
-    "cost-of-small-modules": "build.js"
+  "main": "Explore the cost of small modules for bundle size and execution",
+  "scripts": {
+    "build": "bash bin/build.sh",
+    "prepublish": "npm run build",
+    "serve": "serve -p 9000 --compress"
   },
   "dependencies": {
     "browserify": "^13.1.0",
     "bundle-collapser": "^1.2.1",
+    "closurecompiler": "^1.6.0",
     "lodash.times": "^4.3.2",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.4",
     "rollup": "^0.34.7",
+    "serve": "^1.4.0",
     "uglify-js": "^2.7.0",
     "webpack": "^1.13.1"
   },
   "devDependencies": {},
-  "scripts": {
-    "build": "bash bin/build.sh"
-  },
   "keywords": [],
   "author": "Nolan Lawson <nolan@nolanlawson.com>",
   "license": "Apache-2.0"

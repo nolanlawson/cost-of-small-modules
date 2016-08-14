@@ -5,7 +5,7 @@ PATH=$PATH:$(pwd)/node_modules/.bin
 rimraf lib dist
 mkdirp lib dist
 
-for num in 10 100 1000; do
+for num in 100 1000 5000; do
 
   mkdirp lib/cjs-${num} lib/es6-${num}
 
@@ -26,12 +26,17 @@ for num in 10 100 1000; do
   browserify -p bundle-collapser/plugin ./lib/cjs-${num} > dist/browserify-collapsed-${num}.js
   webpack --entry ./lib/cjs-${num} --output-filename dist/webpack-${num}.js >/dev/null
   rollup --format iife ./lib/es6-${num}/index.js > dist/rollup-${num}.js
+  ccjs lib/es6-${num}/* --compilation_level=ADVANCED_OPTIMIZATIONS \
+    --language_in=ECMASCRIPT6_STRICT --output_wrapper="(function() {%output%})()" > dist/closure-${num}.js
 done
 
 for file in dist/*; do
-  echo -e ';_updatePerf()' >> $file
+  echo -e "_markLoaded();\n$(cat $file)" > $file
+  echo -e ';\n_markFinished()' >> $file
 done
 
 for file in dist/*; do
   uglifyjs -mc < $file > "$(echo $file | sed 's/.js/.min.js/')"
 done
+
+buble script.js > script.es5.js
