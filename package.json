@@ -4,6 +4,7 @@
   "description": "",
   "main": "Explore the cost of small modules for bundle size and execution",
   "scripts": {
+    "publish-site": "bash bin/publish-site.sh",
     "build": "bash bin/build.sh",
     "prepublish": "npm run build",
     "serve": "serve -p 9000 --compress"
