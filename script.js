@@ -65,7 +65,7 @@
       BUNDLERS.forEach((bundler, i) => {
         promise = promise.then(() => {
           if (i === 0) {
-            results.innerHTML += numModules + ' modules\n'
+            results.innerHTML += numModules + ' modules,,,\n'
             results.innerHTML += 'Bundler,Load time (ms),Run time (ms),Total time (ms)\n'
           }
           return getMedianTime(bundler, numModules)
