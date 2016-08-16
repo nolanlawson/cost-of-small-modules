@@ -79,6 +79,7 @@
     button.disabled = true
     runTest().then(() => {
       button.disabled = false
+      results.innerHTML += 'Done!\n'
     }).catch(console.log.bind(console))
   })
 
