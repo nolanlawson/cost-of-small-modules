@@ -10,12 +10,14 @@
     "serve": "serve -p 9000 --compress"
   },
   "dependencies": {
+    "almond": "^0.3.2",
     "browserify": "^13.1.0",
     "buble": "^0.13.1",
     "bundle-collapser": "^1.2.1",
     "closurecompiler": "^1.6.0",
     "lodash.times": "^4.3.2",
     "mkdirp": "^0.5.1",
+    "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "rollup": "^0.34.7",
     "serve": "^1.4.0",

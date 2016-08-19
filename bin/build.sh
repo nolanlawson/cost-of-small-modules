@@ -28,15 +28,21 @@ for num in 100 1000 5000; do
   rollup --format iife ./lib/es6-${num}/index.js > dist/rollup-${num}.js
   ccjs lib/es6-${num}/* --compilation_level=ADVANCED_OPTIMIZATIONS \
     --language_in=ECMASCRIPT6_STRICT --output_wrapper="(function() {%output%})()" > dist/closure-${num}.js
+  r.js -convert lib/cjs-${num} lib/amd-${num}
+  r.js -o baseUrl=lib/amd-${num} paths.requireLib=../../node_modules/requirejs/require name=index \
+    include=requireLib out=dist/rjs-${num}.js optimize=none logLevel=4
+  r.js -o baseUrl=lib/amd-${num} paths.almond=../../node_modules/almond/almond name=index \
+    include=almond out=dist/rjs-almond-${num}.js optimize=none logLevel=4
+
 done
 
 for file in dist/*; do
-  echo -e "_markLoaded();\n$(cat $file)" > $file
-  echo -e ';\n_markFinished()' >> $file
+  echo $'_markLoaded();\n'"$(cat $file)" > $file
+  echo $';\n_markFinished()' >> $file
 done
 
 for file in dist/*; do
-  uglifyjs -mc < $file > "$(echo $file | sed 's/.js/.min.js/')"
+  uglifyjs -mc < $file > "$(echo $file | sed 's/\.js/\.min.js/')"
 done
 
 buble script.js > script.es5.js

@@ -6,7 +6,7 @@
   // do this many iterations and then take the median
   var ITERATIONS = 15
   var NUM_MODULES = [ '100', '1000', '5000' ]
-  var BUNDLERS = [ 'browserify', 'browserify-collapsed', 'webpack', 'rollup', 'closure' ]
+  var BUNDLERS = [ 'browserify', 'browserify-collapsed', 'webpack', 'rollup', 'closure', 'rjs', 'rjs-almond' ]
 
   var results = document.querySelector('#results')
   var button = document.querySelector('#run-test')
