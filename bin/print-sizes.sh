@@ -11,7 +11,7 @@ echo
 
 echo '| ---- | ---- | ---- | ---- |'
 
-for bundler in browserify browserify-collapsed webpack rollup closure; do
+for bundler in browserify browserify-collapsed webpack rollup closure rjs rjs-almond; do
   printf '|'
   printf $bundler
   printf '|'
@@ -33,7 +33,7 @@ echo
 
 echo '| ---- | ---- | ---- | ---- |'
 
-for bundler in browserify browserify-collapsed webpack rollup closure; do
+for bundler in browserify browserify-collapsed webpack rollup closure rjs rjs-almond; do
   printf '|'
   printf $bundler
   printf '|'
