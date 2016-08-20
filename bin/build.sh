@@ -24,7 +24,7 @@ for num in 100 1000 5000; do
 
   browserify ./lib/cjs-${num} > dist/browserify-${num}.js
   browserify -p bundle-collapser/plugin ./lib/cjs-${num} > dist/browserify-collapsed-${num}.js
-  webpack --entry ./lib/cjs-${num} --output-filename dist/webpack-${num}.js >/dev/null
+  webpack -p --entry ./lib/cjs-${num} --output-filename dist/webpack-${num}.js >/dev/null
   rollup --format iife ./lib/es6-${num}/index.js > dist/rollup-${num}.js
   ccjs lib/es6-${num}/* --compilation_level=ADVANCED_OPTIMIZATIONS \
     --language_in=ECMASCRIPT6_STRICT --output_wrapper="(function() {%output%})()" > dist/closure-${num}.js
