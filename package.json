@@ -7,6 +7,7 @@
     "publish-site": "bash bin/publish-site.sh",
     "build": "bash bin/build.sh",
     "prepublish": "npm run build",
+    "print-sizes": "bash bin/print-sizes.sh",
     "serve": "serve -p 9000 --compress"
   },
   "dependencies": {

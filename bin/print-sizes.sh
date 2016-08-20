@@ -38,7 +38,7 @@ for bundler in browserify browserify-collapsed webpack rollup closure rjs rjs-al
   printf $bundler
   printf '|'
   for i in 100 1000 5000; do
-    printf "$(gzip -c dist/$bundler-${i}.min.js | wc -c)"
+    printf "$(gzip -9 -c dist/$bundler-${i}.min.js | wc -c)"
     printf '|'
   done
   echo
