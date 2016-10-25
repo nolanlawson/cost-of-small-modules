@@ -16,7 +16,7 @@ for num in 100 1000 5000; do
     echo "module.exports = ${i}" > lib/cjs-${num}/module_${i}.js
     echo "export default ${i}" > lib/es6-${num}/module_${i}.js
     echo "total += require('./module_${i}')" >> lib/cjs-${num}/index.js
-    echo -e "import module_${i} from './module_${i}'\ntotal += ${i}" >> lib/es6-${num}/index.js
+    echo -e "import module_${i} from './module_${i}'\ntotal += module_${i}" >> lib/es6-${num}/index.js
   done
 
   echo "console.log(total)" >> lib/cjs-${num}/index.js
