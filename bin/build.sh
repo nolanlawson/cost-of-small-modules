@@ -23,7 +23,7 @@ for num in 100 1000 5000; do
   echo "console.log(total)" >> lib/es6-${num}/index.js
 
   browserify ./lib/cjs-${num} > dist/browserify-${num}.js
-  browserify -p bundle-collapser/plugin ./lib/cjs-${num} > dist/browserify-collapsed-${num}.js
+  browserify -p browser-pack-flat/plugin ./lib/cjs-${num} > dist/browserify-flat-${num}.js
   webpack -p --entry ./lib/cjs-${num} --output-filename dist/webpack-${num}.js >/dev/null
   rollup --format iife ./lib/es6-${num}/index.js > dist/rollup-${num}.js
   ccjs lib/es6-${num}/* --compilation_level=ADVANCED_OPTIMIZATIONS \

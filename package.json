@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "almond": "^0.3.2",
+    "browser-pack-flat": "^3.0.5",
     "browserify": "^13.1.0",
     "buble": "^0.13.1",
-    "bundle-collapser": "^1.2.1",
     "closurecompiler": "^1.6.0",
     "lodash.times": "^4.3.2",
     "mkdirp": "^0.5.1",
